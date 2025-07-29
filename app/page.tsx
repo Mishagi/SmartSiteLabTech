@@ -1,6 +1,6 @@
 "use client"
 
-import { Heart, Zap } from "lucide-react"
+import { Heart, Zap, Package } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -17,6 +17,22 @@ const people = [
       "Le encanta hacer ejercicio y mantenerse activa durante la semana",
       "Crea agendas a mano para planear su semana con disciplina",
       "Puede levantarse a las 3:00 a.m. para estudiar si se lo propone",
+    ],
+    products: [
+      {
+        name: "Ahok Ground Spec - Libro de Fantasía",
+        description:
+          "Un libro épico de aventuras que combina magia y tecnología, perfecto para inspirar nuevas ideas creativas.",
+        image: "/images/valentina-book.png",
+        price: "$24.99",
+      },
+      {
+        name: "Colección Tath Garuters",
+        description:
+          "Pack de juegos épicos que combinan estrategia y tecnología, perfectos para relajarse después del estudio con IA.",
+        image: "/images/javier-games.png",
+        price: "$59.99",
+      },
     ],
     color: "bg-purple-500",
   },
@@ -37,6 +53,22 @@ const people = [
       "Puede pasar horas resolviendo bugs como si fuera un reto mental",
       "Tiene playlists organizadas por estado de ánimo y fases del día",
     ],
+    products: [
+      {
+        name: "Tablero de Ajedrez Estratégico",
+        description:
+          "Tablero de ajedrez premium para desarrollar el pensamiento lógico y estratégico entre sesiones de código.",
+        image: "/images/pedro-chess.png",
+        price: "$89.99",
+      },
+      {
+        name: "Motocicleta Deportiva X1",
+        description:
+          "Vehículo ideal para despejar la mente entre sesiones de código, combinando tecnología moderna con la libertad de movimiento.",
+        image: "/images/javier-motorcycle.png",
+        price: "$8,999.99",
+      },
+    ],
     color: "bg-blue-500",
   },
   {
@@ -53,6 +85,22 @@ const people = [
       "Siempre encuentra motivación en la música",
       "Tiene un fuerte compromiso con su formación académica",
       "Sueña con desarrollar sistemas que transformen su comunidad",
+    ],
+    products: [
+      {
+        name: "Mancuerna Hexagonal Pro",
+        description:
+          "Equipo de ejercicio premium para mantener la disciplina física que complementa el entrenamiento mental en ingeniería.",
+        image: "/images/valentina-dumbbell.png",
+        price: "$45.99",
+      },
+      {
+        name: "Auriculares CodeFlow Pro",
+        description:
+          "Auriculares de alta calidad perfectos para escuchar música mientras estudia y se concentra en sus proyectos de ingeniería.",
+        image: "/images/pedro-headphones.png",
+        price: "$129.99",
+      },
     ],
     color: "bg-teal-500",
   },
@@ -86,6 +134,12 @@ export default function PersonalWebPage() {
                   className="text-slate-600 hover:text-slate-900 transition-colors duration-200 font-medium"
                 >
                   Equipo
+                </Link>
+                <Link
+                  href="#chatbot"
+                  className="text-slate-600 hover:text-slate-900 transition-colors duration-200 font-medium"
+                >
+                  Asistente
                 </Link>
                 <Link
                   href="#contacto"
@@ -175,6 +229,9 @@ export default function PersonalWebPage() {
         </div>
       </section>
 
+      {/* Separator Line */}
+      <div className="border-t border-slate-200"></div>
+
       {/* People Sections */}
       {people.map((person, index) => (
         <section key={person.id} id={person.id} className={`py-16 px-4 ${index % 2 === 1 ? "bg-white" : ""}`}>
@@ -253,12 +310,136 @@ export default function PersonalWebPage() {
                       ))}
                     </ul>
                   </div>
+
+                  {/* Products */}
+                  <div>
+                    <div className="flex items-center space-x-2 mb-3">
+                      <Package className="h-5 w-5 text-green-500" />
+                      <h3 className="text-xl font-semibold text-slate-800">Productos Recomendados</h3>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {person.products?.map((product, productIndex) => (
+                        <div key={productIndex} className="bg-white rounded-lg shadow-md p-4 border border-slate-200">
+                          <Image
+                            src={product.image || "/placeholder.svg"}
+                            alt={product.name}
+                            width={200}
+                            height={150}
+                            className="w-full h-32 object-cover rounded-md mb-3"
+                          />
+                          <h4 className="font-semibold text-slate-800 mb-2">{product.name}</h4>
+                          <p className="text-sm text-slate-600 mb-2">{product.description}</p>
+                          <div className="flex justify-between items-center">
+                            <span className={`font-bold ${person.color.replace("bg-", "text-")}`}>{product.price}</span>
+                            <button
+                              className={`px-3 py-1 ${person.color} text-white rounded-full text-sm hover:opacity-90 transition-opacity`}
+                            >
+                              Ver más
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
       ))}
+
+      {/* Separator Line */}
+      <div className="border-t border-slate-200"></div>
+
+      {/* Chatbot Section */}
+      <section id="chatbot" className="py-16 px-4 bg-gradient-to-br from-slate-100 to-white">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">Asistente Virtual SmartSite</h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-8">
+              ¿Tienes preguntas sobre nuestros servicios o el equipo? Nuestro asistente de IA está aquí para ayudarte
+              24/7.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
+              {/* Header del chatbot */}
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                  <h3 className="text-white font-semibold text-lg">SmartSite Assistant</h3>
+                  <span className="text-blue-100 text-sm">En línea</span>
+                </div>
+              </div>
+
+              {/* Contenedor del iframe */}
+              <div className="relative" style={{ height: "600px" }}>
+                <iframe
+                  src="https://copilotstudio.microsoft.com/environments/Default-6ca34ae1-466f-44bc-a7aa-0ac5a78c61b1/bots/cr3a3_smartSiteSolutions/webchat?__version__=2"
+                  frameBorder="0"
+                  className="w-full h-full"
+                  title="SmartSite Solutions Chatbot"
+                  allow="microphone"
+                />
+              </div>
+
+              {/* Footer del chatbot */}
+              <div className="bg-slate-50 px-6 py-3 border-t border-slate-200">
+                <p className="text-sm text-slate-500 text-center">
+                  Powered by Microsoft Copilot Studio • Respuestas instantáneas sobre SmartSite Solutions
+                </p>
+              </div>
+            </div>
+
+            {/* Características del chatbot */}
+            <div className="grid md:grid-cols-3 gap-6 mt-8">
+              <div className="text-center p-6 bg-white rounded-xl shadow-md border border-slate-100">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h4 className="font-semibold text-slate-800 mb-2">Respuestas Instantáneas</h4>
+                <p className="text-sm text-slate-600">Obtén información inmediata sobre nuestros servicios y equipo</p>
+              </div>
+
+              <div className="text-center p-6 bg-white rounded-xl shadow-md border border-slate-100">
+                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <h4 className="font-semibold text-slate-800 mb-2">Disponible 24/7</h4>
+                <p className="text-sm text-slate-600">Nuestro asistente está siempre listo para ayudarte</p>
+              </div>
+
+              <div className="text-center p-6 bg-white rounded-xl shadow-md border border-slate-100">
+                <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                    />
+                  </svg>
+                </div>
+                <h4 className="font-semibold text-slate-800 mb-2">IA Inteligente</h4>
+                <p className="text-sm text-slate-600">Powered by Microsoft Copilot para respuestas precisas</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Separator Line */}
+      <div className="border-t border-slate-200"></div>
 
       {/* Footer */}
       <footer id="contacto" className="bg-slate-800 text-white py-12 px-4">
