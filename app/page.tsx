@@ -25,7 +25,7 @@ const people = [
     name: "Pedro David Arnedo Romero",
     title: "Desarrollador Full Stack & Analista de datos e Inteligencia Artificial",
     bio: "Pedro es un desarrollador full stack comprometido con la creación de soluciones digitales eficientes y creativas. Su enfoque combina la lógica de la programación con el pensamiento estratégico y la innovación tecnológica. Apasionado por el aprendizaje continuo, ha trabajado con tecnologías modernas como Angular, TypeScript y plataformas de inteligencia artificial, aplicándolas en proyectos reales con impacto. Cree en el poder de la tecnología como herramienta para transformar ideas en experiencias funcionales.",
-    image: "/images/pedro-profile.png",
+    image: "/images/pedro-profile-new.png",
     hobbiesImage: "/images/pedro-hobbies.png",
     hobbies: [
       "Programación y desarrollo web",
